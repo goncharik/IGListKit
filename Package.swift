@@ -1,15 +1,20 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
     name: "IGListKit",
+    platforms: [.iOS(.v9), .macOS(.v10_11), .tvOS(.v9)],
     products: [
-        .library(name: "IGListKit", targets: ["IGListKit"])
+        .library(name: "IGListKit", targets: ["IGListDiffKit", "IGListKit"])
     ],
     targets: [
-        .target(
+        .binaryTarget(
+            name: "IGListDiffKit",
+            path: "artifacts/IGListDiffKit.xcframework"
+        ),
+        .binaryTarget(
             name: "IGListKit",
-            path: "Source"
+            path: "artifacts/IGListKit.xcframework"
         )
     ]
 )
